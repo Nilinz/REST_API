@@ -5,7 +5,7 @@ from fastapi_mail import FastMail, MessageSchema, ConnectionConfig, MessageType
 from fastapi_mail.errors import ConnectionErrors
 from pydantic import EmailStr
 
-from services.auth import auth_service
+from app.services.auth import auth_service
 
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
