@@ -21,6 +21,8 @@ redis = "==4.6.0"
 cryptography = "==41.0.5"
 cloudinary = "==1.36.0"
 sphinx = "*"
+pytest = "*"
+pytest-mock = "*"
 
 [dev-packages]
 sphinx = "*"
