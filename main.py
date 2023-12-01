@@ -22,14 +22,34 @@ app.include_router(auth.router, prefix='/api')
 app.include_router(contacts.router, prefix='/api')
 app.include_router(users.router, prefix='/api')
 
-
-@app.on_event("startup")
 async def startup():
+    """
+    Function to be executed on application startup.
+
+    Initializes and connects to the Redis server for rate limiting.
+
+    :return: None
+    """
     r = await redis.Redis(host=settings.redis_host, port=settings.redis_port, db=0, encoding="utf-8",
                           decode_responses=True)
     await FastAPILimiter.init(r)
 
+@app.on_event("startup")
+async def on_startup():
+    """
+    Event handler for application startup.
+
+    Calls the startup function to initialize and connect to the Redis server for rate limiting.
+
+    :return: None
+    """
+    await startup()
 
 @app.get("/")
 def read_root():
+    """
+    Default route to test the application.
+
+    :return: A simple message.
+    """
     return {"message": "Hello World"}
