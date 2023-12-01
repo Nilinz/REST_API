@@ -56,3 +56,8 @@ docker-compose up -d
 ```
 uvicorn main:app --reload
 ```
+
+#Тести
+```
+python -m pytest tests/test_route_auth.py -v
+```
